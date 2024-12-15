@@ -1,5 +1,5 @@
 liste = [("Pierre","Dos",10),("Paul","Brasse",13),("Léa","Crawl",6), ("Léa","Brasse",8) ]
-commande = ''
+commande = '' """Test"""
 
 def cmd_ajout(liste):
     """Ajoute un évènement à la liste"""
