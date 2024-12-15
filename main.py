@@ -1,5 +1,5 @@
 liste = [("Pierre","Dos",10),("Paul","Brasse",13),("Léa","Crawl",6), ("Léa","Brasse",8) ]
-commande = '' """Test"""
+commande = ''
 
 def cmd_ajout(liste):
     """Ajoute un évènement à la liste"""
@@ -7,6 +7,26 @@ def cmd_ajout(liste):
     b = input("quelle nage ? ")
     c = input("combien de longueur ? ")
     liste.append((a,b,c))
+
+def get_cmd():
+    '''Menu d'affichage avec un numéro qui donne une  commande'''
+    print("Menu :")
+    print("1 -> ajout d'une performance")
+    print("2 -> ajout d'un individu")
+    print("3 ->jout d'une nouvelle nage")
+    print("4 -> liste toutes les performances")
+    print("5 -> liste les performances d'un nageur")
+    print("6 -> liste tous les nageurs pratiquants une nage")
+    print("7 -> sauvegarde les données utilisateurs")
+    print("8 -> charge les données utilisateurs")
+    print("0 -> quitter le logiciel")
+    msg = input("Choisissez une option : ")
+    try:
+        msg = int(msg)
+        return msg
+    except ValueError:
+        print("Veuillez entrer un nombre valide.")
+        return get_cmd()
 
 def cmd_liste(liste):
     """Affiche toutes les performances des nageurs"""
@@ -63,13 +83,6 @@ def cmd_load(liste, filename):
         liste.append(tuple(tmp))
     fichier.close()
 
-
-def get_cmd():
-    '''Traitement de la commande d'entrée'''
-    msg = input("Que faut-il faire ? ")
-    msg = msg.lower()
-    return msg
-
 isAlive = True
 while isAlive:
     commande = get_cmd()
@@ -101,5 +114,27 @@ while isAlive:
     if commande == 'exit':
         isAlive = cmd_exit(liste)
         continue
+    
+    if commande == 1:
+        cmd_ajout(liste)
+    elif commande == 2:
+        cmd_ajout(liste)
+    elif commande == 3:
+        cmd_ajout(liste)
+    elif commande == 4:
+        cmd_liste(liste)
+    elif commande == 5:
+        cmd_nageur(liste)
+    elif commande == 6:
+        cmd_nage(liste)
+    elif commande == 7:
+        cmd_save(liste, 'save.csv')
+    elif commande == 8:
+        cmd_load(liste, 'save.csv')
+    elif commande == 0:
+        isAlive = cmd_exit(liste)
+    else:
+        print("Option invalide.")
+
 
     print(f"Commande {commande} inconnue")
