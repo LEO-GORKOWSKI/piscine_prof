@@ -5,7 +5,7 @@ def cmd_ajout(liste):
     """Ajoute un évènement à la liste"""
     a = input("Qui nage ? ")
     b = input("quelle nage ? ")
-    c = input("combien de longueur ? ")
+    c = get_int_value("combien de longeur ?")
     d = input("Quelle est la date (YYYY-MM-DD) ? ")
     liste.append((a, b, c, d))
 
@@ -21,13 +21,8 @@ def get_cmd():
     print("7 -> sauvegarde les données utilisateurs")
     print("8 -> charge les données utilisateurs")
     print("0 -> quitter le logiciel")
-    msg = input("Choisissez une option : ")
-    try:
-        msg = int(msg)
-        return msg
-    except ValueError:
-        print("Veuillez entrer un nombre valide.")
-        return get_cmd()
+    msg = get_int_value("Choisir une option")
+    return msg
 
 def cmd_liste(liste):
     """Affiche toutes les performances des nageurs"""
@@ -83,6 +78,15 @@ def cmd_load(liste, filename):
         tmp = line.split(',')
         liste.append(tuple(tmp))
     fichier.close()
+
+def get_int_value():
+    while True:
+        try:
+            msg = int(input("Valeur ? "))
+            return msg
+        except:
+            print("Indiquez bien une valeur numérique")
+print('le nombre est ', get_int_value())
 
 isAlive = True
 while isAlive:
