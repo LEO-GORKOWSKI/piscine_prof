@@ -5,7 +5,7 @@ def cmd_ajout(liste):
     """Ajoute un évènement à la liste"""
     a = input("Qui nage ? ")
     b = input("quelle nage ? ")
-    c = get_int_value("combien de longeur ?")
+    c = get_int_value()
     d = input("Quelle est la date (YYYY-MM-DD) ? ")
     liste.append((a, b, c, d))
 
@@ -21,7 +21,8 @@ def get_cmd():
     print("7 -> sauvegarde les données utilisateurs")
     print("8 -> charge les données utilisateurs")
     print("0 -> quitter le logiciel")
-    msg = get_int_value("Choisir une option")
+    print("Choisir une option")
+    msg = get_int_value()
     return msg
 
 def cmd_liste(liste):
