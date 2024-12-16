@@ -36,10 +36,19 @@ def cmd_nageur(liste):
     tmp = input("Quel nageur ? ")
     print("Performances de ", tmp)
     print("  nage   |  longueur |  date")
-    print("--------------------")
+    print("--------------------") 
+    longueurs = {}
     for elt in liste:
-        if elt[0]== tmp:
-            print(f" {elt[0]:11}| {elt[1]:8}|  {elt[2]:8} | {elt[3]}")
+        if elt[0] == tmp:
+            print(f" {elt[1]:8}|  {elt[2]:8} | {elt[3]}")
+            longueurs[elt[3]] = elt[2] 
+    if longueurs:
+        max_longueur = max(longueurs.values())
+        min_longueur = min(longueurs.values())
+        moyenne = sum(longueurs.values()) / len(longueurs)
+        print(f"Maximum : {max_longueur}")
+        print(f"Minimum : {min_longueur}")
+        print(f"Moyenne : {moyenne:.2f}")
 
 def cmd_nage(liste):
     """Affiche toutes les performances suivant une nage donnée"""
