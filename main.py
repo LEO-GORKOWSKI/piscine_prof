@@ -14,7 +14,7 @@ def get_cmd():
     print("Menu :")
     print("1 -> ajout d'une performance")
     print("2 -> ajout d'un individu")
-    print("3 ->jout d'une nouvelle nage")
+    print("3 -> ajout d'une nouvelle nage")
     print("4 -> liste toutes les performances")
     print("5 -> liste les performances d'un nageur")
     print("6 -> liste tous les nageurs pratiquants une nage")
@@ -30,14 +30,14 @@ def cmd_liste(liste):
     print("Prénom      |  nage   |  longueur |  date")
     print("--------------------------------------------------")
     for elt in liste:
-        print(f" {elt[0]:11}| {elt[1]:8}|  {elt[2]:8} | {elt[3]}")
+        print(f" {elt[0]:11}| {elt[1]:8}|  {elt[2]:8} | {elt[4]}")
 
 def cmd_nageur(liste):
     """Affiche toutes les performances d'un nageur"""
     tmp = input("Quel nageur ? ")
     print("Performances de ", tmp)
     print("  nage   |  longueur |  date")
-    print("--------------------") 
+    print("----------------------------") 
     longueurs = {}
     for elt in liste:
         if elt[0] == tmp:
@@ -56,7 +56,7 @@ def cmd_nage(liste):
     tmp = input("Quel nage ? ")
     print("Nage ", tmp)
     print(" Nageur     |  longueur |  date")
-    print("------------------------")
+    print("-------------------------------")
     for elt in liste:
         if elt[1]== tmp:
             print(f" {elt[0]:11}|  {elt[2]:8}")
@@ -150,6 +150,3 @@ while isAlive:
         isAlive = cmd_exit(liste)
     else:
         print("Option invalide.")
-
-
-    print(f"Commande {commande} inconnue")
